@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto: Noite das Séries</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    video {
+      width: 80vw;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff5722;
+      border: none;
+      color: white;
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 24px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e64a19;
+    }
+
+    .btn-left {
+      left: 10px;
+    }
+
+    .btn-right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <video id="videoPlayer" controls autoplay>
+      <source src="video.mp4" type="video/mp4">
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <button class="btn btn-left" onclick="previousVideo()">&#9664;</button>
+    <button class="btn btn-right" onclick="nextVideo()">&#9654;</button>
+  </div>
+
+  <script>
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoList = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
+    let currentVideo = 0;
+
+    videoPlayer.onended = function() {
+      nextVideo();
+    };
+
+    function nextVideo() {
+      currentVideo = (currentVideo + 1) % videoList.length;
+      videoPlayer.src = videoList[currentVideo];
+      videoPlayer.play();
+    }
+
+    function previousVideo() {
+      currentVideo = (currentVideo - 1 + videoList.length) % videoList.length;
+      videoPlayer.src = videoList[currentVideo];
+      videoPlayer.play();
+    }
+  </script>
+</body>
+</html>
