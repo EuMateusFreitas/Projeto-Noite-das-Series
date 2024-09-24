@@ -1,91 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto: Noite das Séries</title>
-  <style>
-    body {
-      background-color: #f2f2f2;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+
+<!--==========Cor da barra de navegação mobile==========-->
+<meta name="theme-color" content="#1c1c1c" /><!--Chrome Browser Mobile-->
+<meta name="apple-mobile-web-app-status-bar-style" content="#1c1c1c" /><!--iOS Safari Browser Mobile-->
+<meta name="msapplication-navbutton-color" content="#1c1c1c" /><!--Windows Phone Browser Mobile-->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="apple-mobile-web-app-title" content="Nosso Cantinho de S&eacute;ries">
+<meta name="application-name" content="Nosso Cantinho de S&eacute;ries">
+<meta name="msapplication-TileColor" content="#ff4747">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho de Séries</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     
-    .container {
-      text-align: center;
-      position: relative;
-    }
-
-    video {
-      width: 80vw;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #ff5722;
-      border: none;
-      color: white;
-      padding: 15px;
-      cursor: pointer;
-      border-radius: 50%;
-      font-size: 24px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #e64a19;
-    }
-
-    .btn-left {
-      left: 10px;
-    }
-
-    .btn-right {
-      right: 10px;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <video id="videoPlayer" controls autoplay>
-      <source src="video.mp4" type="video/mp4">
-      Seu navegador não suporta o elemento de vídeo.
-    </video>
+    <header>
+        <div>
+        <h1>Nosso Cantinho de Séries</h1>
+        <p>Bem-vindos, Mateus & <span id="nome-usuario"></span>!</p></div>
+        <p class="series-list">Chega de sermos barrados pelo Google Drive na hora de vemos nossas séries mozão. Agora que criei esse site com muito carinho para nois dois quem tem o comtrole a nos. partil ver séries <span id="nome-usuario"></span></p>
+    </header>
 
-    <button class="btn btn-left" onclick="previousVideo()">&#9664;</button>
-    <button class="btn btn-right" onclick="nextVideo()">&#9654;</button>
-  </div>
+    <section class="series-list">
+        <h2>Nossas Séries</h2>
+        <ul>
+            <li>
+                <h3>La casa de Papel</h3>
+                <p>Próximo episódio: <span class="highlight">S03E05</span></p>
+                <p>Última vez que assistimos juntos: <span class="highlight">20 de setembro de 2024</span></p>
+                <!-- Reprodutor de vídeo -->
+                <video controls width="600">
+                    <source src="videos/stranger-things.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </li>
+        </ul>
+    </section>
 
-  <script>
-    const videoPlayer = document.getElementById('videoPlayer');
-    const videoList = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
-    let currentVideo = 0;
+    <footer>
+        <p>Feito com 💖 por <span>Mateus</span> para <span id="nome-usuario"></span></p>
+    </footer>
 
-    videoPlayer.onended = function() {
-      nextVideo();
-    };
-
-    function nextVideo() {
-      currentVideo = (currentVideo + 1) % videoList.length;
-      videoPlayer.src = videoList[currentVideo];
-      videoPlayer.play();
-    }
-
-    function previousVideo() {
-      currentVideo = (currentVideo - 1 + videoList.length) % videoList.length;
-      videoPlayer.src = videoList[currentVideo];
-      videoPlayer.play();
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
