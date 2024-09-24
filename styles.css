@@ -40,8 +40,11 @@ header h1 {
 }
 
 header p {
-    font-size: 1rem;
-    margin-top: 10px;
+    font-size: .75rem;
+}
+
+p.series-list {
+font-size: 1rem;
 }
 
 .series-list {
